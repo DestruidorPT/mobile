@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -1169,7 +1169,7 @@
     <value>Windows Hello</value>
   </data>
   <data name="BitwardenAutofillGoToSettings" xml:space="preserve">
-    <value>Nem sikerült megnyitni az "Android automata kitöltés" menüpontot. Manuálisan az "Android beállítások --> Rendszer --> Nyelv és bevitel --> Speciális --> Automata kitöltés" menüben érheted el.</value>
+    <value>Nem sikerült megnyitni az "Android automata kitöltés" menüpontot. Manuálisan az "Android beállítások --&gt; Rendszer --&gt; Nyelv és bevitel --&gt; Speciális --&gt; Automata kitöltés" menüben érheted el.</value>
   </data>
   <data name="CustomFieldName" xml:space="preserve">
     <value>Egyéni mező neve</value>
@@ -1794,5 +1794,41 @@
   </data>
   <data name="PersonalOwnershipSubmitError" xml:space="preserve">
     <value>Due to an Enterprise Policy, you are restricted from saving items to your personal vault. Change the Ownership option to an organization and choose from available Collections.</value>
+  </data>
+  <data name="Fido2AbortErro" xml:space="preserve">
+    <value>Aborted FIDO2 operation. Try again.</value>
+  </data>
+  <data name="Fido2Instruction" xml:space="preserve">
+    <value>To continue, you need to complete the authentication successfully in the window that opens, if it doesn't open any windows click on try again botton.</value>
+  </data>
+  <data name="Fido2NetworkFail" xml:space="preserve">
+    <value>No internet connection. Try again.</value>
+  </data>
+  <data name="Fido2NoPermission" xml:space="preserve">
+    <value>Permission was not given. Try again.</value>
+  </data>
+  <data name="Fido2NotSupportedErro" xml:space="preserve">
+    <value>Unsupported device.</value>
+  </data>
+  <data name="Fido2PrivacyErro" xml:space="preserve">
+    <value>Privacy issues encountered. Try again.</value>
+  </data>
+  <data name="Fido2SecurityErro" xml:space="preserve">
+    <value>Security issues encountered.</value>
+  </data>
+  <data name="Fido2ServerDataFail" xml:space="preserve">
+    <value>The server returned invalid data. Try again.</value>
+  </data>
+  <data name="Fido2SomethingWentWrong" xml:space="preserve">
+    <value>Something Went Wrong. Try again.</value>
+  </data>
+  <data name="Fido2TimeoutErro" xml:space="preserve">
+    <value>Timeout for FIDO2. Try again</value>
+  </data>
+  <data name="Fido2Desc" xml:space="preserve">
+    <value>Authentication using Fido2, you can authenticate using the mobile phone or external security key.</value>
+  </data>
+  <data name="Fido2Title" xml:space="preserve">
+    <value>FIDO2</value>
   </data>
 </root>

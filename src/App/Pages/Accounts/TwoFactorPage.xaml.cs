@@ -90,6 +90,20 @@ namespace Bit.App.Pages
                         _messagingService.Send("listenYubiKeyOTP", true);
                     }
                 }
+                else if (message.Command == "gotFido2Token") // Receive the token to send in response t the server about two-factor
+                {
+                    // Check if valid
+                    var token = (string)message.Data;
+                    if (!string.IsNullOrWhiteSpace(token))
+                    {
+                        // send to the api service
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            _vm.Token = token;
+                            await _vm.SubmitAsync();
+                        });
+                    }
+                }
             });
 
             await LoadOnAppearedAsync(_scrollView, true, () =>
@@ -165,6 +179,10 @@ namespace Bit.App.Pages
                 if (_vm.YubikeyMethod)
                 {
                     _messagingService.Send("listenYubiKeyOTP", true);
+                } else if (_vm.Fido2Method) // When press to try again and FIDO2 is selected
+                {
+                    // send broadcast telling the user wants to try again
+                    _messagingService.Send("listenFido2TryAgain", true);
                 }
             }
         }

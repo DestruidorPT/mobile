@@ -1,4 +1,4 @@
-﻿using Bit.Core.Models.Domain;
+using Bit.Core.Models.Domain;
 using Bit.Core.Models.Request;
 using Bit.Core.Models.Response;
 using System;
@@ -51,6 +51,7 @@ namespace Bit.Core.Abstractions
             string organizationId);
         Task<List<BreachAccountResponse>> GetHibpBreachAsync(string username);
         Task PostTwoFactorEmailAsync(TwoFactorEmailRequest request);
+        Task<Fido2AuthenticationChallengeResponse> GetTwoFactorFido2AuthenticationChallengeAsync(TwoFactorFido2ChallengeRequest request);
         Task PutDeviceTokenAsync(string identifier, DeviceTokenRequest request);
         Task PostEventsCollectAsync(IEnumerable<EventRequest> request);
     }

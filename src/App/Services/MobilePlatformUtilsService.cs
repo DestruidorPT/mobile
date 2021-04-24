@@ -134,6 +134,14 @@ namespace Bit.App.Services
             return false;
         }
 
+        /// <summary>
+        /// Check if FIDO2 is supported
+        /// </summary>
+        public bool SupportsFido2()
+        {
+            return Device.RuntimePlatform == Device.Android; // For now, only the android as FIDO2 working
+        }
+
         public void ShowToast(string type, string title, string text, Dictionary<string, object> options = null)
         {
             ShowToast(type, title, new string[] { text }, options);

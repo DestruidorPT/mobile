@@ -1,4 +1,4 @@
-﻿using Bit.Core.Abstractions;
+using Bit.Core.Abstractions;
 using Bit.Core.Enums;
 using Bit.Core.Exceptions;
 using Bit.Core.Models.Domain;
@@ -89,6 +89,13 @@ namespace Bit.Core.Services
                 Priority = 0,
                 Sort = 6,
             });
+            TwoFactorProviders.Add(TwoFactorProviderType.Fido2, new TwoFactorProvider
+            {
+                Type = TwoFactorProviderType.Fido2,
+                Priority = 5, // give more priority than everyone else except the "OrganizationDuo"
+                Sort = 7,
+                Premium = true
+            });
         }
 
         public string Email { get; set; }
@@ -114,6 +121,8 @@ namespace Bit.Core.Services
                 _i18nService.T("DuoOrganizationDesc");
             TwoFactorProviders[TwoFactorProviderType.U2f].Name = _i18nService.T("U2fTitle");
             TwoFactorProviders[TwoFactorProviderType.U2f].Description = _i18nService.T("U2fDesc");
+            TwoFactorProviders[TwoFactorProviderType.Fido2].Name = _i18nService.T("Fido2Title"); // Title of two-factor page
+            TwoFactorProviders[TwoFactorProviderType.Fido2].Description = _i18nService.T("Fido2Desc"); // description of two-factor page
             TwoFactorProviders[TwoFactorProviderType.YubiKey].Name = _i18nService.T("YubiKeyTitle");
             TwoFactorProviders[TwoFactorProviderType.YubiKey].Description = _i18nService.T("YubiKeyDesc");
         }
@@ -190,6 +199,11 @@ namespace Bit.Core.Services
             if (TwoFactorProvidersData.ContainsKey(TwoFactorProviderType.U2f) && _platformUtilsService.SupportsU2f())
             {
                 providers.Add(TwoFactorProviders[TwoFactorProviderType.U2f]);
+            }
+            if (TwoFactorProvidersData.ContainsKey(TwoFactorProviderType.Fido2) && _platformUtilsService.SupportsFido2())
+            {
+                // add FIDO2 to the allowed two-factor if is supported and if exists on the user account
+                providers.Add(TwoFactorProviders[TwoFactorProviderType.Fido2]);
             }
             if (TwoFactorProvidersData.ContainsKey(TwoFactorProviderType.Email))
             {

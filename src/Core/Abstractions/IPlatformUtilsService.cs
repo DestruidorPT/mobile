@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Bit.Core.Enums;
@@ -25,6 +25,7 @@ namespace Bit.Core.Abstractions
         void ShowToast(string type, string title, string text, Dictionary<string, object> options = null);
         void ShowToast(string type, string title, string[] text, Dictionary<string, object> options = null);
         bool SupportsU2f();
+        bool SupportsFido2();
         bool SupportsDuo();
         Task<bool> SupportsBiometricAsync();
         Task<bool> AuthenticateBiometricAsync(string text = null, string fallbackText = null, Action fallback = null);

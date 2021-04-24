@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <pages:BaseContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -102,6 +102,30 @@
                     VerticalOptions="FillAndExpand"
                     MinimumHeightRequest="400" />
                 <StackLayout StyleClass="box" VerticalOptions="End">
+                    <StackLayout StyleClass="box-row, box-row-switch">
+                        <Label
+                            Text="{u:I18n RememberMe}"
+                            StyleClass="box-label, box-label-regular"
+                            HorizontalOptions="StartAndExpand" />
+                        <Switch
+                            IsToggled="{Binding Remember}"
+                            StyleClass="box-value"
+                            HorizontalOptions="End" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Spacing="20" Padding="0" IsVisible="{Binding Fido2Method, Mode=OneWay}">
+                <Label
+                    Text="{ Binding Fido2Instruction, Mode=OneWay }"
+                    Margin="10, 20, 10, 0"
+                    HorizontalTextAlignment="Center" />
+                <Image
+                    Source="yubikey.png"
+                    Margin="10, 0"
+                    WidthRequest="266"
+                    HeightRequest="160"
+                    HorizontalOptions="Center" />
+                <StackLayout StyleClass="box">
                     <StackLayout StyleClass="box-row, box-row-switch">
                         <Label
                             Text="{u:I18n RememberMe}"

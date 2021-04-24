@@ -1,4 +1,4 @@
-﻿using Bit.App.Abstractions;
+using Bit.App.Abstractions;
 using Bit.App.Resources;
 using Bit.Core;
 using Bit.Core.Abstractions;
@@ -63,6 +63,8 @@ namespace Bit.App.Pages
         public bool DuoMethod => SelectedProviderType == TwoFactorProviderType.Duo ||
             SelectedProviderType == TwoFactorProviderType.OrganizationDuo;
 
+        public bool Fido2Method => SelectedProviderType == TwoFactorProviderType.Fido2; // Check if FIDO2 is the two-factor selected
+
         public bool YubikeyMethod => SelectedProviderType == TwoFactorProviderType.YubiKey;
 
         public bool AuthenticatorMethod => SelectedProviderType == TwoFactorProviderType.Authenticator;
@@ -71,10 +73,11 @@ namespace Bit.App.Pages
 
         public bool TotpMethod => AuthenticatorMethod || EmailMethod;
 
-        public bool ShowTryAgain => YubikeyMethod && Device.RuntimePlatform == Device.iOS;
+        public bool ShowTryAgain => YubikeyMethod && Device.RuntimePlatform == Device.iOS || Fido2Method;
 
         public string YubikeyInstruction => Device.RuntimePlatform == Device.iOS ? AppResources.YubiKeyInstructionIos :
             AppResources.YubiKeyInstruction;
+        public string Fido2Instruction => AppResources.Fido2Instruction;
 
         public TwoFactorProviderType? SelectedProviderType
         {
@@ -83,6 +86,7 @@ namespace Bit.App.Pages
             {
                 nameof(EmailMethod),
                 nameof(DuoMethod),
+                nameof(Fido2Method),
                 nameof(YubikeyMethod),
                 nameof(AuthenticatorMethod),
                 nameof(TotpMethod),
@@ -135,6 +139,9 @@ namespace Bit.App.Pages
             {
                 case TwoFactorProviderType.U2f:
                     // TODO
+                    break;
+                case TwoFactorProviderType.Fido2: //If FIDO2 is selected to use to do the two-factor authentication
+                    _messagingService.Send("listenFido2", providerData); // send a broadcast with the data of FIDO2
                     break;
                 case TwoFactorProviderType.YubiKey:
                     _messagingService.Send("listenYubiKeyOTP", true);

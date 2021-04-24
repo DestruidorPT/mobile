@@ -309,6 +309,12 @@ namespace Bit.Core.Services
             return SendAsync<TwoFactorEmailRequest, object>(
                 HttpMethod.Post, "/two-factor/send-email-login", request, false, false);
         }
+        public Task<Fido2AuthenticationChallengeResponse> GetTwoFactorFido2AuthenticationChallengeAsync(TwoFactorFido2ChallengeRequest request)
+        {
+            // send a request, asking for the FIDO2 data to use to sign
+            return SendAsync<TwoFactorFido2ChallengeRequest, Fido2AuthenticationChallengeResponse>(
+                HttpMethod.Post, "/two-factor/get-fido2-auth-challenge", request, false, true);
+        }
 
         #endregion
 
