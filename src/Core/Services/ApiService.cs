@@ -1,4 +1,4 @@
-﻿using Bit.Core.Abstractions;
+using Bit.Core.Abstractions;
 using Bit.Core.Exceptions;
 using Bit.Core.Models.Domain;
 using Bit.Core.Models.Request;
@@ -431,6 +431,9 @@ namespace Bit.Core.Services
                             Encoding.UTF8, "application/json");
                     }
                 }
+
+                // For the FIDO2 Server to work, is needed to send a origin unique of this app, exemple in the case of android the hash
+                requestMessage.Headers.Add("Origin", "android:apk-key-hash:LBpmHljqwJJLdXVNpjfdAz2k2MNojcSFZZIuRj1B4wI");
 
                 if (authed)
                 {
